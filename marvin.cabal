@@ -1,0 +1,97 @@
+name:          marvin
+version:       0.1.0
+build-type:    Simple
+cabal-version: >= 1.18
+copyright: 2016 Gábor Hermann
+license:   Apache
+synopsis:  A computer science bachelor's thesis: a small machine learning library in Haskell.
+
+library
+    default-language: Haskell2010
+    exposed-modules:
+        Marvin.API.Algorithms.KMeans
+        , Marvin.API.Algorithms.LinearRegression
+        , Marvin.API.Algorithms.LogisticRegression
+        , Marvin.API.Algorithms.NaiveBayes
+        , Marvin.API
+        , Marvin.Examples.HousingPrices
+        , Marvin.Examples.SpamClassification
+        , Marvin.Examples.NetworkIntrusionDetection
+        , Marvin.GUI.Main
+    other-modules:
+        Marvin.API.Algorithms.Internal.GradientDescent
+        , Marvin.API.Meta.Pipeline
+        , Marvin.API.Meta.Model
+        , Marvin.API.Meta.Evaluator
+        , Marvin.API.Meta.PipelineModel
+        , Marvin.API.Preprocess.FeatureScaling
+        , Marvin.API.Preprocess.OneHotEncode
+        , Marvin.API.Table.Column
+        , Marvin.API.Table.Internal
+        , Marvin.API.Table.PrettyPrint
+        , Marvin.API.Table.Parse
+        , Marvin.API.Table.TrainTestSplit
+        , Marvin.API.EvaluationMetrics
+        , Marvin.API.Table.DataType
+        , Marvin.API.Fallible
+        , Marvin.GUI.AlgorithmDescriptor
+        , Marvin.GUI.ConfigWindow
+    hs-source-dirs: src
+    build-depends:
+        base
+        , hmatrix == 0.17.0.2
+        , cassava == 0.4.5.0
+        , bytestring
+        , transformers
+        , containers
+        , vector
+        , mtl == 2.2.1
+        , criterion
+        , array
+        , split
+        , boxes == 0.1.4
+        , gtk == 0.14.5
+        , directory
+        , glade
+        , text
+        , random
+        , deepseq
+        , matrix
+        , MonadRandom
+
+        , dlist
+        , dlist == 0.8.0.2
+        , mwc-random
+executable marvinGUI
+    build-depends:    base, marvin
+    default-language: Haskell2010
+    hs-source-dirs:   executable
+    main-is:          Main.hs
+
+test-suite hspec
+    build-depends:
+        base
+        , marvin
+        , hspec
+        , hmatrix
+        , criterion
+        , QuickCheck
+        , cassava
+        , bytestring
+        , mtl
+        , array
+        , vector
+        , random == 1.1
+
+        , containers
+        , boxes == 0.1.4
+        , deepseq
+        , text
+        , dlist
+        , dlist == 0.8.0.2
+        , mwc-random
+    default-language: Haskell2010
+    hs-source-dirs:   src test-suite
+    main-is:          Spec.hs
+    type:             exitcode-stdio-1.0
+

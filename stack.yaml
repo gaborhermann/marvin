@@ -1,0 +1,11 @@
+flags: {}
+extra-package-dbs: []
+packages:
+- location: '.'
+extra-deps:
+- cassava-streams-0.3.0.0
+- dlist-0.8.0.2
+- mwc-random-0.13.4.0
+- glade-0.13.1
+compiler-check: newer-minor
+resolver: lts-7.0
